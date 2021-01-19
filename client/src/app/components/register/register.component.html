@@ -1,0 +1,100 @@
+<!-- <div class="warraper">
+    <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+        <input type="email" placeholder="email" formControlName="email">
+        <br>
+        <span *ngIf="myForm.controls.email.dirty && myForm.controls.email.invalid">email cannot be empty</span>
+        <br>
+        <input type="password" placeholder="password" formControlName="password">
+        <br>
+        <span *ngIf="myForm.controls.password.dirty && myForm.controls.password.invalid">password cannot be empty</span>
+        <br>
+        <input type="submit" value="Login" [disabled]="myForm.invalid">
+    </form>
+    <p>don't have an account yet? <a routerLink="/register">Register</a></p>
+</div> -->
+<!-- <button mat-raised-button (click)="isLinear = !isLinear" id="toggle-linear">
+    {{!isLinear ? 'Enable linear mode' : 'Disable linear mode'}}
+</button> -->
+<mat-horizontal-stepper linear #stepper>
+    <mat-step   [completed] = "this.validation_step1">
+        <form [formGroup]="firstFormGroup">
+            <ng-template matStepLabel>Step 1</ng-template>
+            <mat-form-field>
+                <mat-label>ID</mat-label>
+                <input matInput placeholder="ID" formControlName="user_id" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="Email" formControlName="email" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password</mat-label>
+                <input matInput placeholder="Password" formControlName="password" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Password confirm</mat-label>
+                <input matInput placeholder="Password confirm" formControlName="passwordConfirm" required>
+            </mat-form-field>
+            <div>
+                <p>{{msg}}</p>
+                <br>
+                <button mat-button *ngIf = "this.validation_step1==false" (click)= "this.first_step()">submit</button>
+                <button mat-button *ngIf = "this.validation_step1==true" id="next" mat-button matStepperNext >Next</button>
+                <p>registered? <a routerLink="/login">Login</a></p>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="secondFormGroup" label="Step 2" [completed] = "this.validation_step2" >
+        <form [formGroup]="secondFormGroup">
+            <mat-form-field>
+                <mat-label>City</mat-label>
+                <mat-select formControlName="city">
+                    <mat-option value="Tel Aviv">Tel Aviv</mat-option>
+                    <mat-option value="Haifa">Haifa</mat-option>
+                    <mat-option value="Jerusalem">Jerusalem</mat-option>
+                    <mat-option value="Rishon Lezion">Rishon Lezion</mat-option>
+                    <mat-option value="Ashdod">Ashdod</mat-option>
+                    <mat-option value="Beer Sheva">Beer Sheva</mat-option>
+                    <mat-option value="Petah Tikva">Petah Tikva</mat-option>
+                    <mat-option value="Beit Shemesh">Beit Shemesh</mat-option>
+                    <mat-option value="Holon">Holon</mat-option>
+                    <mat-option value="Bnei Brak">Bnei Brak</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Street</mat-label>
+                <input matInput formControlName="street" placeholder="Street" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Name</mat-label>
+                <input matInput formControlName="f_name" placeholder="Name" required>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+                <mat-label>Last name</mat-label>
+                <input matInput formControlName="l_name" placeholder=" Last name" required>
+            </mat-form-field>
+            <br>
+            <div>
+               
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button matStepperNext (click)= "final_register()">Next</button>
+                <p>registered? <a routerLink="/login">Login</a></p>
+            </div>
+        </form>
+    </mat-step>
+    
+    <!-- <mat-step>
+        <ng-template matStepLabel>Done</ng-template>
+        <p>You are now done.</p>
+        <div>
+            <button mat-button matStepperPrevious>Back</button>
+            <button mat-button (click)="stepper.reset()">Reset</button>
+        </div>
+    </mat-step> -->
+</mat-horizontal-stepper>

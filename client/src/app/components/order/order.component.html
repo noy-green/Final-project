@@ -1,0 +1,80 @@
+<div id="container">
+    <div id="cart">
+        <h1>My cart</h1>
+        <button mat-button (click)="move_to_store()">Back to shop</button>
+        <div id="search">
+            <mat-form-field class="example-form-field">
+                <mat-label>Search in cart</mat-label>
+                <input matInput type="text" [(ngModel)]="value">
+            </mat-form-field>
+            <div id="b">
+                <button (click)="handle_search()" class="bs">
+                    <mat-icon>search</mat-icon>
+                </button>
+                <button class="bs" mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="clear()">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
+        </div>
+
+        <div *ngFor="let p of this.ms.product_in_cart" >
+            <mat-card class="product_in_cart">
+                <mat-card-header>
+                    <h4 class="name">{{p.name}}</h4>
+                </mat-card-header>
+                <div id="main">
+                    <div id="info">
+                        <mat-card-subtitle> price {{p.price}}</mat-card-subtitle>
+                        <h5>quantity {{p.quantity_in_cart}}</h5>
+                        <h5> Total price per product {{p.quantity_in_cart*p.price}}</h5>
+                    </div>
+                    <img class="img" mat-card-image src={{p.imagePath}}>
+                </div>
+            </mat-card>
+        </div>
+        <h2>No changes can be made here</h2>
+        <h3>Total price for cart {{ this.us.cart.price}}</h3>
+    </div>
+
+    <div id="order">
+        <h1>Order</h1>
+        <h3>Delivery details</h3>
+        <form [formGroup]="myForm" (ngSubmit)="handle_submit()">
+            <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="City" formControlName="city" (dblclick)="city()">
+            </mat-form-field>
+            <br>
+            <span *ngIf="myForm.controls.city.dirty && myForm.controls.city.invalid">City cannot be empty</span>
+            <br>
+            <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="Street" formControlName="street" (dblclick)="street()">
+            </mat-form-field>
+            <br>
+            <span *ngIf="myForm.controls.street.dirty && myForm.controls.street.invalid">Street cannot be empty</span>
+            <br>
+            <mat-form-field class="example-form-field">
+                <input matInput type="date" placeholder="date" formControlName="deliveryDate" min={{today}}>
+            </mat-form-field>
+            <br>
+            <span *ngIf="myForm.controls.deliveryDate.dirty && myForm.controls.deliveryDate.invalid">Delivery date
+                cannot be empty</span>
+            <span>{{this.msg}}</span>
+            <br>
+
+            <h3>Paiments details</h3>
+            <mat-form-field class="example-form-field">
+                <input matInput type="text" placeholder="credit card" formControlName="creditCard">
+            </mat-form-field>
+            <br>
+            <span *ngIf="myForm.controls.creditCard.dirty && myForm.controls.creditCard.invalid">Credit card cannot be
+                empty</span>
+            <br>
+            <input type="submit" value="order" [disabled]="myForm.invalid" (click)="handleSubmit()">
+        </form>
+    </div>
+
+</div>
+
+<div *ngIf="this.open==true" id="temp">
+    <app-recipt></app-recipt>
+</div>

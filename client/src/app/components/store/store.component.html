@@ -1,0 +1,45 @@
+<!-- <div id="store_container">
+    <div id="cart">
+        <h3>My cart</h3>
+        <app-cart></app-cart> -->
+<!-- *ngIf = "this.ms.login == true -->
+<!-- </div>
+    <div id="products">
+        <app-products></app-products>
+    </div>
+
+</div> -->
+
+
+<mat-drawer-container class="example-container" autosize>
+
+
+    <mat-drawer #drawer class="example-sidenav" mode="side" [opened]="this.as.sidenav">
+
+        <div *ngIf="!this.us.admin">
+            <h3>My cart</h3>
+            <app-cart></app-cart>
+        </div>
+        <div *ngIf="this.us.admin && (this.as.edit_or_add==false)">
+            <h3>Add a new product</h3>
+            <app-add-product></app-add-product>
+        </div>
+        <div *ngIf="this.us.admin && this.as.edit_or_add==true" >
+            <h3>Edit</h3>
+            <app-edit-product></app-edit-product>
+        </div>
+    </mat-drawer>
+
+    <div class="example-sidenav-content">
+        <button type="button" mat-button *ngIf="!this.us.admin" (click)="this.as.change()">
+            <mat-icon id="cart_icon">shopping_cart</mat-icon>
+        </button>
+        <button type="button" mat-button *ngIf="this.us.admin" (click)="this.as.change('add')">
+            <mat-icon>add</mat-icon>
+        </button>
+
+        <app-products></app-products>
+
+    </div>
+
+</mat-drawer-container>

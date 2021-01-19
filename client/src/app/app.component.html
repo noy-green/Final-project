@@ -1,0 +1,19 @@
+<mat-toolbar>
+  <span id="Laydies">Girls</span>
+  <mat-form-field id="search" *ngIf="this.us.loggedUser != undefined && this.us.in_store==true">
+    <input matInput type="text" [(ngModel)]="value">
+    <button matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button id="s" class="search" (click)="handle_search()">
+      serach
+    </button>
+  </mat-form-field>
+  <div *ngIf="this.us.loggedUser" class="logOut">
+    <h5>Hello {{this.us.loggedUser[0].f_name}}</h5>
+    <button mat-button (click)="this.us.logOut()">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+<router-outlet></router-outlet>

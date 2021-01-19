@@ -1,0 +1,52 @@
+<form [formGroup]="FromGroup" (ngSubmit)="handleSubmit()">
+    <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Name" type="text" required>
+    </mat-form-field>
+    <br>
+    <span *ngIf="FromGroup.controls.name.dirty && FromGroup.controls.name.invalid">name can not be empty</span>
+    <br>
+    <mat-form-field>
+        <mat-label>Category</mat-label>
+        <mat-select formControlName="category_id" >
+            <mat-option [value]="this.ms.categories[0]._id">{{this.ms.categories[0].name}}</mat-option>
+            <mat-option [value]="this.ms.categories[1]._id">{{this.ms.categories[1].name}}</mat-option>
+            <mat-option [value]="this.ms.categories[2]._id">{{this.ms.categories[2].name}}</mat-option>
+            <mat-option [value]="this.ms.categories[3]._id">{{this.ms.categories[3].name}}</mat-option>
+            <mat-option [value]="this.ms.categories[4]._id">{{this.ms.categories[4].name}}</mat-option>
+        </mat-select>
+
+    </mat-form-field>
+    <br>
+    <span *ngIf="FromGroup.controls.category_id.dirty && FromGroup.controls.category_id.invalid">category can not be
+        empty</span>
+    <br>
+    <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput formControlName="price" placeholder="Price" type="number" required>
+    </mat-form-field>
+    <br>
+    <span *ngIf="FromGroup.controls.price.dirty && FromGroup.controls.price.invalid">price can not be empty</span>
+    <br>
+    <mat-form-field>
+        <mat-label>Image Path</mat-label>
+        <input matInput formControlName="imagePath" placeholder="Image Path" type="text" required>
+    </mat-form-field>
+    <br>
+    <span *ngIf="FromGroup.controls.imagePath.dirty && FromGroup.controls.imagePath.invalid">image Path can not be
+        empty</span>
+    <br>
+    <mat-form-field>
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" placeholder="Description" type="text" required>
+    </mat-form-field>
+    <br>
+    <span *ngIf="FromGroup.controls.description.dirty && FromGroup.controls.description.invalid">description can not be
+        empty</span>
+    <div>
+        <button mat-button type="submit"  [disabled]="FromGroup.invalid">submit</button>
+        <!-- <input type="submit" value="Submit" [disabled]="FromGroup.invalid"> -->
+    </div>
+</form>
+
+<!-- name, category_id, price, imagePath, quantity, description  -->

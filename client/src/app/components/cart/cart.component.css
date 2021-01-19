@@ -1,0 +1,43 @@
+.product_in_cart{
+    width: 80%;
+    height: 5%;
+    border: solid, 4px, cadetblue;
+    background-color: mistyrose;
+    margin: 5px;
+}
+
+.img{
+    width: 55px;
+    height: 55px;
+}
+
+mat-card-subtitle{
+    size: 15px;
+}
+
+#main{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#info{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+#x{
+    width:7px;
+    height: 7px;
+    margin-left: 10px;
+    border: solid  mistyrose;; 
+    background-color:  mistyrose; 
+
+}
+
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}

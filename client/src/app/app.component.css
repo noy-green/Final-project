@@ -1,0 +1,45 @@
+#logo{
+    width: 7%;
+    height: 100%;
+}
+
+#Laydies{
+    margin-left: 2%;
+}
+
+#search{
+   margin-left: 5%;
+}
+
+#s{
+    margin-left: 40px;
+    size: 60px;
+}
+
+/* .search{
+    width: 35px;
+    height: 35px;
+} */
+
+button{
+    border: white;
+}
+
+.logOut{
+    position: absolute; 
+    top: 0px;
+    right: 0px
+    }
+
+
+
+.mat-toolbar{
+  margin: auto;
+  position: relative;
+}
+
+
+
+
+
+

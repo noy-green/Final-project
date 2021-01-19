@@ -1,0 +1,22 @@
+<button mat-button *ngIf = "this.us.cart != undefined" (click)="clean_the_Cart()" color="basic">Clean the cart</button>
+<div *ngFor="let p of this.ms.product_in_cart">
+    <mat-card class="product_in_cart">
+        <mat-card-header class="header">
+             <h4>{{p.name}}</h4>
+             <button (click)="remove_product_from_cart(p)" id="x"><mat-icon>delete_forever</mat-icon></button>
+        </mat-card-header>
+        <div id="main">
+            <div id = "info">
+                <mat-card-subtitle> price {{p.price}}</mat-card-subtitle>
+                <h5>quantity  {{p.quantity_in_cart}}</h5>
+                <h5>Price per product {{p.quantity_in_cart*p.price}}</h5>
+            </div>
+            <img class="img" mat-card-image src={{p.imagePath}}>
+        </div>
+        <mat-card-actions>
+            <button mat-button (click)="openDialog(p)">Change quantity</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<h3 *ngIf="this.us.cart != undefined">Total price for cart {{ this.us.cart.price}}</h3>
+<button mat-button *ngIf = "this.us.cart != undefined" (click)="move_to_order()">Checkout</button>

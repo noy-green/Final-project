@@ -1,0 +1,55 @@
+<div class="main" id="login">
+    <div id="form_login">
+        <br>
+        <button id="status" *ngIf="this.ms.login" class="myButton" (click)="move_to_store()">{{this.us.status}}</button>
+        <br>
+        <p>Registered?</p>
+        <div class="warraper">
+
+            <!-- <mat-form-field class="example-form-field">
+            <mat-label>Clearable input</mat-label>
+            <input matInput type="text" [(ngModel)]="value">
+            <button mat-button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+              <mat-icon>close</mat-icon>
+            </button>
+          </mat-form-field> -->
+
+            <form [formGroup]="myForm" (ngSubmit)="handleSubmit()">
+                <mat-form-field class="example-form-field">
+                    <input matInput type="email" placeholder="email" formControlName="email">
+                </mat-form-field>
+                <br>
+                <span *ngIf="myForm.controls.email.dirty && myForm.controls.email.invalid">email cannot be empty</span>
+                <br>
+                <mat-form-field class="example-form-field">
+                    <input matInput type="password" placeholder="password" formControlName="password">
+                </mat-form-field>
+                <br>
+                <span *ngIf="myForm.controls.password.dirty && myForm.controls.password.invalid">password cannot be empty</span>
+                <br>
+                <p id="msg_2">{{this.msg}}</p>
+                <button mat-button type="submit" [disabled]="myForm.invalid">Login</button>
+                <!-- <input type="submit" value="Login" [disabled]="myForm.invalid"> -->
+            </form>
+            <p>don't have an account yet? <a routerLink="/register">Register</a></p>
+        </div>
+    </div>
+    <div id="blah">
+
+        <p> fresh pieces dropping daily, exclusive ranges you can't get anywhere else and new brands being added all the
+            time – plus free delivery and returns.
+            Wherever and whoever you are, exploring your style never felt so good.</p>
+
+    </div>
+    <div id="information">
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p>Number of products avaible on the site is {{num_of_products}}</p>
+        <p>Number of orders completed on the site is {{num_of_orders}}</p>
+        <p id="msg">{{this.us.msg_login}}</p>
+    </div>
+
+</div>
